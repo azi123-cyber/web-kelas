@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Kelas XD - V3 Pro</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="background-gradient"></div>
+
+    <main class="main-container">
+        <section id="hari-ini" class="page-section active">
+            <div class="page-header">
+                <h1>Tugas Hari Ini</h1>
+                <p>Prioritas utama, selesaikan segera!</p>
+            </div>
+            <div id="hari-ini-list" class="task-list"></div>
+        </section>
+
+        <section id="mingdep" class="page-section">
+            <div class="page-header">
+                <h1>Akan Datang</h1>
+                <p>Persiapkan dirimu untuk tugas-tugas ini.</p>
+            </div>
+            <div id="mingdep-list" class="task-list"></div>
+        </section>
+
+        <section id="riwayat" class="page-section">
+            <div class="page-header">
+                <h1>Riwayat Tugas</h1>
+                <p>Tugas yang telah melewati batas waktu.</p>
+            </div>
+            <div id="riwayat-list" class="task-list"></div>
+        </section>
+        
+        <section id="profil" class="page-section">
+            <div class="page-header">
+                <h1>Profil Kelas XD</h1>
+                <p>Warga kebanggaan kelas.</p>
+            </div>
+            <div id="profil-list" class="profile-grid"></div>
+        </section>
+    </main>
+
+    <button id="add-task-button" class="fab" title="Tambah Tugas Baru">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2h6z"></path></svg>
+    </button>
+
+    <div id="add-task-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal-button">&times;</button>
+            <h2>Tambah Tugas Baru</h2>
+            <form id="task-form">
+                <div class="form-group">
+                    <label for="task-title">Judul Tugas</label>
+                    <input type="text" id="task-title" placeholder="Contoh: Fisika Bab 3" required>
+                </div>
+                <div class="form-group">
+                    <label for="task-desc">Deskripsi</label>
+                    <textarea id="task-desc" rows="3" placeholder="Contoh: Kerjakan soal pilihan ganda hal. 50" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="task-deadline">Batas Waktu</label>
+                    <input type="date" id="task-deadline" required>
+                </div>
+                <button type="submit" class="button-primary">Simpan Tugas</button>
+            </form>
+        </div>
+    </div>
+    
+    <div id="edit-profile-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal-button">&times;</button>
+            <h2>Edit Profil</h2>
+            <form id="edit-profile-form">
+                <input type="hidden" id="edit-profile-id">
+                <div class="form-group">
+                    <label for="edit-profile-nama">Nama</label>
+                    <input type="text" id="edit-profile-nama" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-profile-peran">Peran / Deskripsi</label>
+                    <input type="text" id="edit-profile-peran" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-profile-wa">Nomor WhatsApp (Contoh: 628123456789)</label>
+                    <input type="tel" id="edit-profile-wa" placeholder="Awali dengan 62">
+                </div>
+                <div class="form-group">
+                    <label for="edit-profile-foto">URL Foto</label>
+                    <input type="url" id="edit-profile-foto" placeholder="https://example.com/foto.jpg">
+                </div>
+                <button type="submit" class="button-primary">Simpan Perubahan</button>
+            </form>
+        </div>
+    </div>
+
+    <nav class="bottom-nav">
+        <button class="nav-button active" data-page="hari-ini">Hari Ini</button>
+        <button class="nav-button" data-page="mingdep">Mingdep</button>
+        <button class="nav-button" data-page="riwayat">Riwayat</button>
+        <button class="nav-button" data-page="profil">Profil</button>
+    </nav>
+    
+    <script src="script.js" defer></script>
+</body>
+</html>
