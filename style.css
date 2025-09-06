@@ -280,3 +280,41 @@ body {
 .profile-card .wa-link:hover {
     transform: scale(1.05);
 }
+/* Responsif untuk mobile kecil */
+@media (max-width: 480px) {
+  .page-header h1 {
+    font-size: 24px;
+  }
+  .task-card, .profile-card {
+    padding: 15px;
+  }
+  .task-card h3 {
+    font-size: 16px;
+  }
+  .task-card p {
+    font-size: 13px;
+  }
+  .fab {
+    width: 50px;
+    height: 50px;
+    bottom: 80px;
+    right: 15px;
+  }
+  .fab svg {
+    width: 24px;
+    height: 24px;
+  }
+  .bottom-nav {
+    font-size: 12px;
+  }
+}
+/* === Responsive untuk Mobile === */
+@media (max-width: 480px) {
+  .page-header h1 { font-size: 24px; }
+  .task-card, .profile-card { padding: 15px; }
+  .task-card h3 { font-size: 16px; }
+  .task-card p { font-size: 13px; }
+  .fab { width: 50px; height: 50px; bottom: 80px; right: 15px; }
+  .fab svg { width: 24px; height: 24px; }
+  .bottom-nav { font-size: 12px; }
+}
