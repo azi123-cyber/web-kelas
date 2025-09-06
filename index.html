@@ -1,139 +1,99 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Kelas XD - V3 Pro</title>
-    
-    <link rel="stylesheet" href="style.css">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Kelas XD - V3 Pro</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+  <main class="main-container">
+    <section id="hari-ini" class="page-section active">
+      <div class="page-header"><h1>Tugas Hari Ini</h1><p>Prioritas utama, selesaikan segera!</p></div>
+      <div id="hari-ini-list" class="task-list"></div>
+    </section>
+    <section id="mingdep" class="page-section">
+      <div class="page-header"><h1>Akan Datang</h1><p>Persiapkan dirimu untuk tugas-tugas ini.</p></div>
+      <div id="mingdep-list" class="task-list"></div>
+    </section>
+    <section id="riwayat" class="page-section">
+      <div class="page-header"><h1>Riwayat Tugas</h1><p>Tugas yang telah melewati batas waktu.</p></div>
+      <div id="riwayat-list" class="task-list"></div>
+    </section>
+    <section id="profil" class="page-section">
+      <div class="page-header"><h1>Profil Kelas XD</h1><p>Warga kebanggaan kelas.</p></div>
+      <div id="profil-list" class="profile-grid"></div>
+    </section>
+  </main>
 
-    <div class="background-gradient"></div>
+  <button id="add-task-button" class="fab" title="Tambah Tugas Baru">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2h6z"></path></svg>
+  </button>
 
-    <main class="main-container">
-        <section id="hari-ini" class="page-section active">
-            <div class="page-header">
-                <h1>Tugas Hari Ini</h1>
-                <p>Prioritas utama, selesaikan segera!</p>
-            </div>
-            <div id="hari-ini-list" class="task-list"></div>
-        </section>
-
-        <section id="mingdep" class="page-section">
-            <div class="page-header">
-                <h1>Akan Datang</h1>
-                <p>Persiapkan dirimu untuk tugas-tugas ini.</p>
-            </div>
-            <div id="mingdep-list" class="task-list"></div>
-        </section>
-
-        <section id="riwayat" class="page-section">
-            <div class="page-header">
-                <h1>Riwayat Tugas</h1>
-                <p>Tugas yang telah melewati batas waktu.</p>
-            </div>
-            <div id="riwayat-list" class="task-list"></div>
-        </section>
-        
-        <section id="profil" class="page-section">
-            <div class="page-header">
-                <h1>Profil Kelas XD</h1>
-                <p>Warga kebanggaan kelas.</p>
-            </div>
-            <div id="profil-list" class="profile-grid"></div>
-        </section>
-    </main>
-
-    <button id="add-task-button" class="fab" title="Tambah Tugas Baru">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2h6z"></path></svg>
-    </button>
-
-    <div id="add-task-modal" class="modal-overlay">
-        <div class="modal-content">
-            <button class="close-modal-button">&times;</button>
-            <h2>Tambah Tugas Baru</h2>
-            <form id="task-form">
-                <div class="form-group">
-                    <label for="task-title">Judul Tugas</label>
-                    <input type="text" id="task-title" placeholder="Contoh: Fisika Bab 3" required>
-                </div>
-                <div class="form-group">
-                    <label for="task-desc">Deskripsi</label>
-                    <textarea id="task-desc" rows="3" placeholder="Contoh: Kerjakan soal pilihan ganda hal. 50" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="task-deadline">Batas Waktu</label>
-                    <input type="date" id="task-deadline" required>
-                </div>
-                <button type="submit" class="button-primary">Simpan Tugas</button>
-            </form>
+  <div id="add-task-modal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="close-modal-button">&times;</button>
+      <h2>Tambah Tugas Baru</h2>
+      <form id="task-form">
+        <div class="form-group">
+          <label for="task-title">Judul Tugas</label>
+          <input type="text" id="task-title" required>
         </div>
-    </div>
-    
-    <div id="edit-profile-modal" class="modal-overlay">
-        <div class="modal-content">
-            <button class="close-modal-button">&times;</button>
-            <h2>Edit Profil</h2>
-            <form id="edit-profile-form">
-                <input type="hidden" id="edit-profile-id">
-                <div class="form-group">
-                    <label for="edit-profile-nama">Nama</label>
-                    <input type="text" id="edit-profile-nama" required>
-                </div>
-                <div class="form-group">
-                    <label for="edit-profile-peran">Peran / Deskripsi</label>
-                    <input type="text" id="edit-profile-peran" required>
-                </div>
-                <div class="form-group">
-                    <label for="edit-profile-wa">Nomor WhatsApp (Contoh: 628123456789)</label>
-                    <input type="tel" id="edit-profile-wa" placeholder="Awali dengan 62">
-                </div>
-                <div class="form-group">
-                    <label for="edit-profile-foto">URL Foto</label>
-                    <input type="url" id="edit-profile-foto" placeholder="https://example.com/foto.jpg">
-                </div>
-                <button type="submit" class="button-primary">Simpan Perubahan</button>
-            </form>
+        <div class="form-group">
+          <label for="task-desc">Deskripsi</label>
+          <textarea id="task-desc" rows="3" required></textarea>
         </div>
+        <div class="form-group">
+          <label for="task-deadline">Batas Waktu</label>
+          <input type="date" id="task-deadline" required>
+        </div>
+        <button type="submit" class="button-primary">Simpan Tugas</button>
+      </form>
     </div>
+  </div>
 
-    <nav class="bottom-nav">
-        <button class="nav-button active" data-page="hari-ini">Hari Ini</button>
-        <button class="nav-button" data-page="mingdep">Mingdep</button>
-        <button class="nav-button" data-page="riwayat">Riwayat</button>
-        <button class="nav-button" data-page="profil">Profil</button>
+  <div id="edit-profile-modal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="close-modal-button">&times;</button>
+      <h2>Edit Profil</h2>
+      <form id="edit-profile-form">
+        <input type="hidden" id="edit-profile-id">
+        <div class="form-group"><label for="edit-profile-nama">Nama</label><input type="text" id="edit-profile-nama" required></div>
+        <div class="form-group"><label for="edit-profile-peran">Peran / Deskripsi</label><input type="text" id="edit-profile-peran" required></div>
+        <div class="form-group"><label for="edit-profile-wa">Nomor WhatsApp</label><input type="tel" id="edit-profile-wa"></div>
+        <div class="form-group"><label for="edit-profile-foto">URL Foto</label><input type="url" id="edit-profile-foto"></div>
+        <button type="submit" class="button-primary">Simpan Perubahan</button>
+      </form>
+    </div>
+  </div>
 
-    </nav>
+  <nav class="bottom-nav">
+    <button class="nav-button active" data-page="hari-ini">Hari Ini</button>
+    <button class="nav-button" data-page="mingdep">Hari Lain</button>
+    <button class="nav-button" data-page="riwayat">Riwayat</button>
+    <button class="nav-button" data-page="profil">Profil</button>
+  </nav>
 
-    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-database-compat.js"></script>
-
-    <script>
-      // GANTI SEMUA DI BAWAH INI DENGAN KODE KONFIGURASI DARI FIREBASE ANDA
-      const firebaseConfig = {
-        apiKey: "AIzaSyABC...",
-        authDomain: "web-kelas-xd.firebaseapp.com",
-        databaseURL: "https://web-kelas-xd-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: "web-kelas-xd",
-        storageBucket: "web-kelas-xd.appspot.com",
-        messagingSenderId: "123456789",
-        appId: "1:123456789:web:abcdef123"
-      };
-
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-      const database = firebase.database(); // Inisialisasi Realtime Database
-    </script>
-    
-    <script src="script.js" defer></script>
-</body>
-</html>
-    
-    <script src="script.js" defer></script>
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+  <script>
+    const firebaseConfig = {
+   apiKey: "AIzaSyAZ0Ub7WoCH201DtWLHt2Ol3y_v1RHyTlg",
+   authDomain: "proyek-kelas-xd.firebaseapp.com",
+   databaseURL: "https://proyek-kelas-xd-default-rtdb.asia-southeast1.firebasedatabase.app", // ✅ wajib
+   projectId: "proyek-kelas-xd",
+   storageBucket: "proyek-kelas-xd.appspot.com", // ✅ dibetulkan
+   messagingSenderId: "405547467491",
+   appId: "1:405547467491:web:a9784f28c7c5f8e9317bd6",
+   measurementId: "G-Z12RXV7RK3"
+};
+    firebase.initializeApp(firebaseConfig);
+    const database = firebase.database();
+  </script>
+  <script src="script.js" defer></script>
 </body>
 </html>
